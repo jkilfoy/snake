@@ -6,4 +6,6 @@ module com.game.gamewarmup {
 
     opens com.game.gamewarmup to javafx.fxml;
     exports com.game.gamewarmup;
+    exports com.game.gamewarmup.gameobject;
+    opens com.game.gamewarmup.gameobject to javafx.fxml;
 }
