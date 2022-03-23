@@ -31,8 +31,10 @@ public class Rectangle {
                 break;
             case RIGHT:
                 x2 += scalar;
+                break;
             case DOWN:
                 y2 += scalar;
+                break;
         }
     }
 
@@ -51,6 +53,7 @@ public class Rectangle {
                 break;
             case RIGHT:
                 x1 += scalar;
+                break;
             case DOWN:
                 y1 += scalar;
         }
@@ -70,6 +73,25 @@ public class Rectangle {
      */
     public double getHeight() {
         return y2 - y1;
+    }
+
+    /**
+     * Returns a rectangle of 0 area coincident with the boundary on the given direction
+     * @param direction
+     * @return
+     */
+    public Rectangle getBoundary(Direction direction) {
+        switch (direction) {
+            case LEFT:
+                return new Rectangle(x1, y1, x1, y2);
+            case UP:
+                return new Rectangle(x1, y1, x2, y1);
+            case RIGHT:
+                return new Rectangle(x2, y1, x2, y2);
+            case DOWN:
+                return new Rectangle(x1, y2, x2, y2);
+        }
+        return null;
     }
 
     public boolean intersects(Rectangle other) {
