@@ -1,6 +1,6 @@
 package com.game.gamewarmup.gameobject;
 
-import com.game.gamewarmup.Direction;
+import com.game.gamewarmup.util.Direction;
 import com.game.gamewarmup.deque.Deque;
 import com.game.gamewarmup.util.Rectangle;
 import javafx.event.EventHandler;

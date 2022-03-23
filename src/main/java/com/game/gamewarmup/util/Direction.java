@@ -1,4 +1,4 @@
-package com.game.gamewarmup;
+package com.game.gamewarmup.util;
 
 public enum Direction {
     UP, LEFT, RIGHT, DOWN;

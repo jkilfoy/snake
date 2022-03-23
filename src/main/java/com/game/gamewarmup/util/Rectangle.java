@@ -1,6 +1,5 @@
 package com.game.gamewarmup.util;
 
-import com.game.gamewarmup.Direction;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import lombok.AllArgsConstructor;

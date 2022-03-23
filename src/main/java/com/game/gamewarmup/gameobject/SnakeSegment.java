@@ -1,6 +1,6 @@
 package com.game.gamewarmup.gameobject;
 
-import com.game.gamewarmup.Direction;
+import com.game.gamewarmup.util.Direction;
 import com.game.gamewarmup.util.Rectangle;
 import lombok.AllArgsConstructor;
 
