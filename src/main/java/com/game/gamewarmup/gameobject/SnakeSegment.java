@@ -2,9 +2,9 @@ package com.game.gamewarmup.gameobject;
 
 import com.game.gamewarmup.util.Direction;
 import com.game.gamewarmup.util.Rectangle;
-import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-@AllArgsConstructor
+@Getter
 public class SnakeSegment extends Rectangle {
 
     private Direction direction;    // the direction this segment will move in
