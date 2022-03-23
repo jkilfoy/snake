@@ -3,18 +3,22 @@ package com.game.gamewarmup;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyEvent;
 
 public class Game extends Canvas {
 
     public static final int SIZE = 16;
     public static final int LENGTH = 512;
+    public static final int BORDER_SIZE = 16;
 
     GraphicsContext context;
-    Grid grid;
+    World world;
 
     public Game() {
         super(LENGTH, LENGTH);
-        grid = new Grid(LENGTH, SIZE);
+        world = new World(LENGTH, SIZE, BORDER_SIZE);
+        addEventHandler(KeyEvent.KEY_PRESSED, world.getSnake());
+        setFocusTraversable(true);
         context = getGraphicsContext2D();
         run();
     }
@@ -31,11 +35,15 @@ public class Game extends Canvas {
     }
 
     private void update() {
+        // move snake
 
+        // detect collision
+
+        // resolve collisions
     }
 
     private void render() {
-        grid.render(context);
+        world.render(context);
 
     }
 
