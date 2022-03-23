@@ -37,24 +37,11 @@ public class Snake implements EventHandler<KeyEvent> {
     }
 
     /**
-     * Adds a front body segment directly behind the head with 0 length
+     * Adds a front body segment directly "behind" the head w.r.t. the specified direction
+     * @param direction the direction the segment will move in
      */
     public void addFrontSegment(Direction direction) {
-        Rectangle r = new Rectangle();
-        switch (direction) {
-            case RIGHT:
-                r = head.getBoundary(Direction.LEFT);
-                break;
-            case UP:
-                r = head.getBoundary(Direction.DOWN);
-                break;
-            case LEFT:
-                r = head.getBoundary(Direction.RIGHT);
-                break;
-            case DOWN:
-                r = head.getBoundary(Direction.UP);
-                break;
-        }
+        Rectangle r = head.getBoundary(direction.getOpposite());
         SnakeSegment segment = new SnakeSegment(r.getX1(), r.getY1(), r.getX2(), r.getY2(), direction);
         body.addFirst(segment);
     }
@@ -101,22 +88,22 @@ public class Snake implements EventHandler<KeyEvent> {
         switch (keyEvent.getCode()) {
             case W:
             case UP:
-                if (direction.equals(Direction.UP) || direction.equals(Direction.DOWN)) return;
+                if (direction.sameAxis(Direction.UP)) return;
                 newDirection = Direction.UP;
                 break;
             case A:
             case LEFT:
-                if (direction.equals(Direction.LEFT) || direction.equals(Direction.RIGHT)) return;
+                if (direction.sameAxis(Direction.LEFT)) return;
                 newDirection = Direction.LEFT;
                 break;
             case S:
             case DOWN:
-                if (direction.equals(Direction.UP) || direction.equals(Direction.DOWN)) return;
+                if (direction.sameAxis(Direction.DOWN)) return;
                 newDirection = Direction.DOWN;
                 break;
             case D:
             case RIGHT:
-                if (direction.equals(Direction.LEFT) || direction.equals(Direction.RIGHT)) return;
+                if (direction.sameAxis(Direction.RIGHT)) return;
                 newDirection = Direction.RIGHT;
                 break;
         }
