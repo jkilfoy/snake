@@ -22,7 +22,9 @@ public class World {
     double height;
     double borderWidth;
     boolean gameOver;
+    boolean displayHUD;
     int growthCounter;
+    int score;
 
     // GAME OBJECTS
     Snake snake;
@@ -33,6 +35,7 @@ public class World {
         this.width = width;
         this.height = height;
         this.borderWidth = borderWidth;
+        displayHUD = true;
         gameOver = false;
         growthCounter = 0;
 
@@ -81,6 +84,7 @@ public class World {
             snake.grow(newGrowth);
             makeFood();
             growthCounter++;
+            score++;
         }
     }
 

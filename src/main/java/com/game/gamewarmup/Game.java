@@ -44,6 +44,7 @@ public class Game extends Canvas {
 
     private void render() {
         world.render(context);
+        HUD.render(context, world);
     }
 
 }
