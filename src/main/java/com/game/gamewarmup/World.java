@@ -4,12 +4,14 @@ import com.game.gamewarmup.gameobject.Food;
 import com.game.gamewarmup.gameobject.Perimeter;
 import com.game.gamewarmup.gameobject.Snake;
 import com.game.gamewarmup.gameobject.SnakeSegment;
+import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import lombok.Getter;
 
 @Getter
-public class World {
+public class World implements EventHandler<KeyEvent> {
 
     public static final double FOOD_WIDTH = 16;
     public static final double SNAKE_WIDTH = 32;
@@ -22,6 +24,7 @@ public class World {
     double height;
     double borderWidth;
     boolean gameOver;
+    boolean paused;
     boolean displayHUD;
     int growthCounter;
     int score;
@@ -37,6 +40,7 @@ public class World {
         this.borderWidth = borderWidth;
         displayHUD = true;
         gameOver = false;
+        paused = false;
         growthCounter = 0;
 
         snake = new Snake(Color.GREEN, SNAKE_WIDTH);
@@ -60,7 +64,7 @@ public class World {
     }
 
     public void update() {
-        if (gameOver) return;
+        if (gameOver || paused) return;
         // move snake
         snake.update();
 
@@ -95,6 +99,15 @@ public class World {
         food.render(graphics);
         for (Perimeter p : perimeter) {
             p.render(graphics);
+        }
+    }
+
+    @Override
+    public void handle(KeyEvent keyEvent) {
+        switch (keyEvent.getCode()) {
+            case SPACE:
+                paused = !paused;
+                break;
         }
     }
 }

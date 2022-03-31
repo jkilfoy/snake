@@ -19,8 +19,9 @@ public class Game extends Canvas {
         world = new World(WORLD_SIZE, WORLD_SIZE, BORDER_SIZE);
         context = getGraphicsContext2D();
 
-        // add event handler
+        // add event handlers
         addEventHandler(KeyEvent.KEY_PRESSED, world.getSnake());
+        addEventHandler(KeyEvent.KEY_PRESSED, world);
         setFocusTraversable(true);
 
         // run the game
