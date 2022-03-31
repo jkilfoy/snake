@@ -4,7 +4,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 
 public class HUD {
 
@@ -12,7 +11,7 @@ public class HUD {
         if (world.isDisplayHUD()) {
             graphics.setFill(Color.RED);
             graphics.setFont(Font.font("Verdana", FontWeight.BLACK, 28));
-            graphics.fillText("Score: " + world.getScore(), 16, 12);
+            graphics.fillText("Score: " + world.getScore(), 16, 8 + World.TOP_BORDER_OFFSET);
             if (world.isGameOver()) {
                 graphics.fillText("G A M E   O V E R", world.getWidth()/4, world.getHeight()/3);
             }

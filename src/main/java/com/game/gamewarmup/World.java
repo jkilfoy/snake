@@ -4,7 +4,6 @@ import com.game.gamewarmup.gameobject.Food;
 import com.game.gamewarmup.gameobject.Perimeter;
 import com.game.gamewarmup.gameobject.Snake;
 import com.game.gamewarmup.gameobject.SnakeSegment;
-import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
@@ -17,6 +16,7 @@ public class World implements EventHandler<KeyEvent> {
 
     public static final double FOOD_WIDTH = 16;
     public static final double SNAKE_WIDTH = 32;
+    public static final double TOP_BORDER_OFFSET = 20;
     public static final double FOOD_FROM_BORDER_DISTANCE = 8;
     public static final double INIT_SNAKE_GROWTH = 24;
     public static final double SNAKE_GROWTH_INC = 4;
@@ -47,7 +47,7 @@ public class World implements EventHandler<KeyEvent> {
 
         snake = new Snake(Color.GREEN, SNAKE_WIDTH);
         perimeter = new Perimeter[4];
-        perimeter[0] = new Perimeter(0, 0, width, borderWidth);                 // top
+        perimeter[0] = new Perimeter(0, 0, width, borderWidth + TOP_BORDER_OFFSET);                 // top; the top border is a little longer
         perimeter[1] = new Perimeter(width - borderWidth, 0, width, height);    // right
         perimeter[2] = new Perimeter(0, height - borderWidth, width, height);   // bottom
         perimeter[3] = new Perimeter(0, 0, borderWidth, height);                // left
@@ -56,7 +56,7 @@ public class World implements EventHandler<KeyEvent> {
 
     public void makeFood() {
         double foodX = Math.random() * (width - 2*borderWidth - FOOD_WIDTH) + borderWidth;
-        double foodY = Math.random() * (height - 2*borderWidth - FOOD_WIDTH) + borderWidth;
+        double foodY = Math.random() * (height - 2*borderWidth - FOOD_WIDTH - TOP_BORDER_OFFSET) + borderWidth + TOP_BORDER_OFFSET;
         food = new Food(foodX, foodY, foodX + FOOD_WIDTH, foodY + FOOD_WIDTH);
     }
 
