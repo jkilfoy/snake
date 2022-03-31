@@ -4,11 +4,13 @@ import com.game.gamewarmup.gameobject.Food;
 import com.game.gamewarmup.gameobject.Perimeter;
 import com.game.gamewarmup.gameobject.Snake;
 import com.game.gamewarmup.gameobject.SnakeSegment;
+import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import lombok.Getter;
+import lombok.SneakyThrows;
 
 @Getter
 public class World implements EventHandler<KeyEvent> {
@@ -16,8 +18,8 @@ public class World implements EventHandler<KeyEvent> {
     public static final double FOOD_WIDTH = 16;
     public static final double SNAKE_WIDTH = 32;
     public static final double FOOD_FROM_BORDER_DISTANCE = 8;
-    public static final double InIT_SNAKE_GROWTH = 24;
-    public static final double SNAKE_GROWTH_InC = 4;
+    public static final double INIT_SNAKE_GROWTH = 24;
+    public static final double SNAKE_GROWTH_INC = 4;
 
     // WORLD PROPERTIES
     double width;
@@ -60,7 +62,6 @@ public class World implements EventHandler<KeyEvent> {
 
     public void gameOver() {
         gameOver = true;
-        System.exit(0);
     }
 
     public void update() {
@@ -84,7 +85,7 @@ public class World implements EventHandler<KeyEvent> {
 
         // food collision detection
         if (snake.getHead().intersects(food)) {
-            double newGrowth = InIT_SNAKE_GROWTH + growthCounter * SNAKE_GROWTH_InC;
+            double newGrowth = INIT_SNAKE_GROWTH + growthCounter * SNAKE_GROWTH_INC;
             snake.grow(newGrowth);
             makeFood();
             growthCounter++;
@@ -102,11 +103,18 @@ public class World implements EventHandler<KeyEvent> {
         }
     }
 
+    @SneakyThrows
     @Override
     public void handle(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
             case SPACE:
                 paused = !paused;
+                break;
+            case ESCAPE:
+                System.exit(0);
+                break;
+            case R:
+                Main.app.start(Main.stage);
                 break;
         }
     }

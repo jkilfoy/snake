@@ -9,8 +9,13 @@ import java.io.IOException;
 
 public class Main extends Application {
 
+    public static Main app = null;
+    public static Stage stage = null;
+
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage primaryStage) throws IOException {
+        app = this;
+        stage = primaryStage;
         stage.setTitle("This is my game!!!!");
         Game game = new Game();
         Group root = new Group(game);

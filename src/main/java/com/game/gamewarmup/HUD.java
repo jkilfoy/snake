@@ -13,7 +13,10 @@ public class HUD {
             graphics.setFill(Color.RED);
             graphics.setFont(Font.font("Verdana", FontWeight.BLACK, 28));
             graphics.fillText("Score: " + world.getScore(), 16, 12);
-            if (world.isPaused()) {
+            if (world.isGameOver()) {
+                graphics.fillText("G A M E   O V E R", world.getWidth()/4, world.getHeight()/3);
+            }
+            else if (world.isPaused()) {
                 graphics.fillText("P A U S E D", world.getWidth()/3, world.getHeight()/3);
             }
         }

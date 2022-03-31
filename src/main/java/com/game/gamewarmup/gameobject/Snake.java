@@ -15,6 +15,7 @@ public class Snake implements EventHandler<KeyEvent> {
     public static final double INIT_X = 100;
     public static final double INIT_Y = 100;
     public static final double INIT_SPEED = 4;
+    public static final double SPEED_INC = 0.2;
     public static final Direction INIT_DIRECTION = Direction.DOWN;
 
     private Color color;
@@ -48,6 +49,7 @@ public class Snake implements EventHandler<KeyEvent> {
 
     public void grow(double amount) {
         growing += amount;
+        speed += SPEED_INC;
     }
 
     public void update() {
