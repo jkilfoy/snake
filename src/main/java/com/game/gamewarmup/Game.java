@@ -8,7 +8,7 @@ import javafx.scene.input.KeyEvent;
 public class Game extends Canvas {
 
     public static final int SIZE = 16;
-    public static final int WORLD_SIZE = 512;
+    public static final int WORLD_SIZE = 760;
     public static final int BORDER_SIZE = 16;
 
     GraphicsContext context;
